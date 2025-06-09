@@ -12,17 +12,17 @@ pipeline{
     }
   stage('build'){
     steps{
-      sh 'gradle build'
+      sh './gradlew build'
     }
   }
   stage('test'){
     steps{
-      sh 'gradle test'
+      sh './gradlew test'
     }
   }
     stage('run'){
       steps{
-        sh 'gradle run'
+        sh './gradlew run'
       }
     }
   }
