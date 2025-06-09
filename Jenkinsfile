@@ -1,33 +1,28 @@
 pipeline {
   agent any
-
   tools {
-    gradle 'Gradle'
     jdk 'JDK'
   }
-
   stages {
-    stage('checkout') {
+    stage('Checkout') {
       steps {
         git branch: 'master', url: 'https://github.com/Yoganand30/Mygradleprac.git'
       }
     }
-
-    stage('build') {
+    stage('Build') {
       steps {
-        sh 'gradle build'
+        sh 'chmod +x gradlew'       // Make the wrapper executable
+        sh './gradlew build'
       }
     }
-
-    stage('test') {
+    stage('Test') {
       steps {
-        sh 'gradle test'
+        sh './gradlew test'
       }
     }
-
-    stage('run') {
+    stage('Run') {
       steps {
-        sh 'gradle run'
+        sh './gradlew run'
       }
     }
   }
